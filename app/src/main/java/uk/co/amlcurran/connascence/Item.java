@@ -1,19 +1,28 @@
 package uk.co.amlcurran.connascence;
 
+import java.text.DecimalFormat;
+
 public class Item {
 
-    int priceInPence;
+    private final int pence;
+    private final int euros;
 
-    public Item(int price) {
-
+    public Item(int pence, int euros) {
+        this.pence = pence;
+        this.euros = euros;
     }
 
     public int getPrice() {
-        return priceInPence;
+        return pence;
     }
 
     public double toEuros() {
-        double pounds = priceInPence / 100d;
-        return pounds * Converter.get().poundsToEuros();
+        if (euros == 0) {
+            double pounds = pence / 100d;
+            double euros = pounds * Converter.get().poundsToEuros();
+            return Double.valueOf(new DecimalFormat("#.00").format(euros));
+        } else {
+            return euros;
+        }
     }
 }
