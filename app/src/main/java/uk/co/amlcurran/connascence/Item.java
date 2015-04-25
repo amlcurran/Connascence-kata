@@ -13,7 +13,7 @@ public class Item {
         this.euros = euros;
     }
 
-    public int priceInPence() {
+    public int price() {
         if (pence == 0) {
             double pounds = euros * Converter.get().eurosToPounds();
             return (int) (pounds * 100);

@@ -11,7 +11,6 @@ class User {
         purchasedItems.add(item);
     }
 
-
     public boolean hasPurchased(Item item) {
         return purchasedItems.contains(item);
     }
