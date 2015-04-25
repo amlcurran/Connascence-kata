@@ -8,5 +8,7 @@ public interface Merchant {
     interface Callbacks {
 
         void purchased(User purchaser, Item item);
+
+        void failedPurchase(User purchaser, Item item);
     }
 }
