@@ -19,7 +19,7 @@ public class ItemTest {
 
         double euros = item.toEuros();
 
-        assertThat(euros).isEqualTo(Converter.get().poundsToEuros() * item.getPrice() / 100);
+        assertThat(euros).isEqualTo(1.1 * item.getPrice() / 100);
     }
 
 }
