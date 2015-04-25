@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 public class Item {
 
+    public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.00");
     private final int pence;
     private final int euros;
 
@@ -12,15 +13,20 @@ public class Item {
         this.euros = euros;
     }
 
-    public int getPrice() {
-        return pence;
+    public int priceInPence() {
+        if (pence == 0) {
+            double pounds = euros * Converter.get().eurosToPounds();
+            return (int) (pounds * 100);
+        } else {
+            return pence;
+        }
     }
 
-    public double toEuros() {
+    public double priceInEuros() {
         if (euros == 0) {
             double pounds = pence / 100d;
             double euros = pounds * Converter.get().poundsToEuros();
-            return Double.valueOf(new DecimalFormat("#.00").format(euros));
+            return Double.valueOf(DECIMAL_FORMAT.format(euros));
         } else {
             return euros;
         }

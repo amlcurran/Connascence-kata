@@ -14,4 +14,8 @@ public class Converter {
     public double poundsToEuros() {
         return 1.1;
     }
+
+    public double eurosToPounds() {
+        return 1 / poundsToEuros();
+    }
 }
