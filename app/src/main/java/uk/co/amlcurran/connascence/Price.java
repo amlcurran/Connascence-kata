@@ -19,7 +19,7 @@ public class Price {
         return new Price(0, euros, Converter.get());
     }
 
-    public int price() {
+    public int inPence() {
         if (pence == 0) {
             return converter.convertEurosToPence(euros);
         } else {
@@ -27,7 +27,7 @@ public class Price {
         }
     }
 
-    public double priceInEuros() {
+    public double inEuros() {
         if (euros == 0) {
             return converter.convertPenceToEuros(pence);
         } else {

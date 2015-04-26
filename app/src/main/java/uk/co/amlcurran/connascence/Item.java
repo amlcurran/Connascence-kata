@@ -14,14 +14,6 @@ public class Item {
         return new Item(label, price);
     }
 
-    public int price() {
-        return price.price();
-    }
-
-    public double priceInEuros() {
-        return price.priceInEuros();
-    }
-
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Item && ((Item) obj).label.equals(label);
@@ -30,5 +22,9 @@ public class Item {
     @Override
     public int hashCode() {
         return label.hashCode();
+    }
+
+    public Price getPrice() {
+        return price;
     }
 }
