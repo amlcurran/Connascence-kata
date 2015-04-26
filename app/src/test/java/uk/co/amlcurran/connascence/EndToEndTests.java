@@ -24,7 +24,7 @@ public class EndToEndTests {
         Item item = new Item(300, 0);
         system.purchase(item);
 
-        assertThat(user.hasFailedToPurchase(item)).isTrue();
+        assertThat(user.hasFailedToPurchase(new Item(300, 0))).isTrue();
     }
 
     private static class SuccessfulMerchant implements Merchant {
