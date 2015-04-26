@@ -11,7 +11,7 @@ public class EndToEndTests {
         User user = new User();
         PaymentSystem system = new PaymentSystem(user, new SuccessfulMerchant());
 
-        Item item = new Item(300, 0);
+        Item item = new Item("Cheese", 300, 0);
         system.purchase(item);
 
         assertThat(user.hasPurchased(item)).isTrue();
@@ -21,10 +21,10 @@ public class EndToEndTests {
         User user = new User();
         PaymentSystem system = new PaymentSystem(user, new UnsuccessfulMerchant());
 
-        Item item = new Item(300, 0);
+        Item item = new Item("Coffee", 300, 0);
         system.purchase(item);
 
-        assertThat(user.hasFailedToPurchase(new Item(300, 0))).isTrue();
+        assertThat(user.hasFailedToPurchase(new Item("Coffee", 300, 0))).isTrue();
     }
 
     private static class SuccessfulMerchant implements Merchant {

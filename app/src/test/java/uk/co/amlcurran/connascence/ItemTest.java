@@ -8,14 +8,14 @@ public class ItemTest {
 
     @Test
     public void testAnItemReportsItsPriceCorrectly() {
-        Item item = new Item(200, 0);
+        Item item = new Item("Cola", 200, 0);
 
         assertThat(item.price()).isEqualTo(200);
     }
 
     @Test
     public void testAnItemConvertsToEurosCorrectly() {
-        Item item = new Item(300, 0);
+        Item item = new Item("Gin", 300, 0);
 
         double euros = item.priceInEuros();
 
@@ -24,7 +24,7 @@ public class ItemTest {
 
     @Test
     public void testAnItemConvertsToPoundsCorrectly() {
-        Item item = new Item(0, 3);
+        Item item = new Item("Cooked Chicken", 0, 3);
 
         double euros = item.price();
 
@@ -33,7 +33,7 @@ public class ItemTest {
 
     @Test
     public void testAnItemStartedInEurosReportsEurosCorrectly() {
-        Item item = new Item(0, 300);
+        Item item = new Item("Baked Beans", 0, 300);
 
         double euros = item.priceInEuros();
 

@@ -8,7 +8,7 @@ public class Item {
     private final int pence;
     private final int euros;
 
-    public Item(int pence, int euros) {
+    public Item(String label, int pence, int euros) {
         this.pence = pence;
         this.euros = euros;
     }
