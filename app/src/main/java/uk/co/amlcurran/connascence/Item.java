@@ -1,44 +1,25 @@
 package uk.co.amlcurran.connascence;
 
-import java.text.DecimalFormat;
-
 public class Item {
 
-    public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.00");
-    private final Converter converter;
     private final String label;
-    private final int pence;
-    private final int euros;
+    private final Price price;
 
-    private Item(String label, int pence, int euros, Converter converter) {
+    private Item(String label, Price price) {
         this.label = label;
-        this.pence = pence;
-        this.euros = euros;
-        this.converter = converter;
+        this.price = price;
     }
 
-    static Item inPence(String label, int pence) {
-        return new Item(label, pence, 0, Converter.get());
-    }
-
-    static Item inEuros(String label, int euros) {
-        return new Item(label, 0, euros, Converter.get());
+    static Item withPrice(String label, Price price) {
+        return new Item(label, price);
     }
 
     public int price() {
-        if (pence == 0) {
-            return converter.convertEurosToPence(euros);
-        } else {
-            return pence;
-        }
+        return price.price();
     }
 
     public double priceInEuros() {
-        if (euros == 0) {
-            return converter.convertPenceToEuros(pence);
-        } else {
-            return euros;
-        }
+        return price.priceInEuros();
     }
 
     @Override

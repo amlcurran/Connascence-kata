@@ -11,7 +11,7 @@ public class EndToEndTests {
         User user = new User();
         PaymentSystem system = new PaymentSystem(user, new SuccessfulMerchant());
 
-        Item item = Item.inPence("Cheese", 300);
+        Item item = Item.withPrice("Cheese", Price.inPence(300));
         system.purchase(item);
 
         assertThat(user.hasPurchased(item)).isTrue();
@@ -21,10 +21,10 @@ public class EndToEndTests {
         User user = new User();
         PaymentSystem system = new PaymentSystem(user, new UnsuccessfulMerchant());
 
-        Item item = Item.inPence("Cheese", 300);;
+        Item item = Item.withPrice("Cheese", Price.inPence(300));;
         system.purchase(item);
 
-        assertThat(user.hasFailedToPurchase(Item.inPence("Cheese", 300))).isTrue();
+        assertThat(user.hasFailedToPurchase(Item.withPrice("Cheese", Price.inPence(300)))).isTrue();
     }
 
     private static class SuccessfulMerchant implements Merchant {

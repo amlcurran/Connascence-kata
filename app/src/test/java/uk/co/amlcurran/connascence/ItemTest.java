@@ -8,14 +8,14 @@ public class ItemTest {
 
     @Test
     public void testAnItemReportsItsPriceCorrectly() {
-        Item item = Item.inPence("Cola", 200);
+        Item item = Item.withPrice("Cola", Price.inPence(200));
 
         assertThat(item.price()).isEqualTo(200);
     }
 
     @Test
     public void testAnItemConvertsToEurosCorrectly() {
-        Item item = Item.inPence("Gin", 300);
+        Item item = Item.withPrice("Gin", Price.inPence(300));
 
         double euros = item.priceInEuros();
 
@@ -24,7 +24,7 @@ public class ItemTest {
 
     @Test
     public void testAnItemConvertsToPoundsCorrectly() {
-        Item item = Item.inEuros("Cooked Chicken", 3);
+        Item item = Item.withPrice("Cooked Chicken", Price.inEuros(3));
 
         double euros = item.price();
 
@@ -33,7 +33,7 @@ public class ItemTest {
 
     @Test
     public void testAnItemStartedInEurosReportsEurosCorrectly() {
-        Item item = Item.inEuros("Baked Beans", 300);
+        Item item = Item.withPrice("Baked Beans", Price.inEuros(300));
 
         double euros = item.priceInEuros();
 
