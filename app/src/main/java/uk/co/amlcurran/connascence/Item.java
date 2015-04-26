@@ -5,10 +5,12 @@ import java.text.DecimalFormat;
 public class Item {
 
     public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.00");
+    private String label;
     private final int pence;
     private final int euros;
 
     public Item(String label, int pence, int euros) {
+        this.label = label;
         this.pence = pence;
         this.euros = euros;
     }
@@ -30,5 +32,15 @@ public class Item {
         } else {
             return euros;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Item && ((Item) obj).label.equals(label);
+    }
+
+    @Override
+    public int hashCode() {
+        return label.hashCode();
     }
 }
