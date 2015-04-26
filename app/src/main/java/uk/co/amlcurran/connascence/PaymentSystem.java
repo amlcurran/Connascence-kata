@@ -20,27 +20,35 @@ class PaymentSystem {
 
     public void purchase(final Item item) {
         merchant.setPurchaser(user);
-        final Future<?> submit = executor.submit(new Runnable() {
-            @Override
-            public void run() {
-                merchant.purchaseItem(item, new Merchant.Callbacks() {
-                    @Override
-                    public void purchased(User purchaser, Item item) {
-                        purchaser.purchasedItem(item);
-                    }
-
-                    @Override
-                    public void failedPurchase(User purchaser, Item item) {
-                        purchaser.failedToPurchase(item);
-                    }
-                });
-            }
-        });
+        Future submission = executor.submit(new PurchaseItemRunnable(item));
         try {
-            submit.get(2000, TimeUnit.MILLISECONDS);
+            submission.get(2000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             e.printStackTrace();
             user.failedToPurchase(item);
+        }
+    }
+
+    private class PurchaseItemRunnable implements Runnable {
+        private final Item item;
+
+        public PurchaseItemRunnable(Item item) {
+            this.item = item;
+        }
+
+        @Override
+        public void run() {
+            merchant.purchaseItem(item, new Merchant.Callbacks() {
+                @Override
+                public void purchased(User purchaser, Item item) {
+                    purchaser.purchasedItem(item);
+                }
+
+                @Override
+                public void failedPurchase(User purchaser, Item item) {
+                    purchaser.failedToPurchase(item);
+                }
+            });
         }
     }
 }
