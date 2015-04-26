@@ -27,8 +27,7 @@ public class Item {
 
     public int price() {
         if (pence == 0) {
-            double pounds = euros * converter.eurosToPounds();
-            return (int) (pounds * 100);
+            return converter.convertEurosToPence(euros);
         } else {
             return pence;
         }
@@ -36,9 +35,7 @@ public class Item {
 
     public double priceInEuros() {
         if (euros == 0) {
-            double pounds = pence / 100d;
-            double euros = pounds * converter.poundsToEuros();
-            return Double.valueOf(DECIMAL_FORMAT.format(euros));
+            return converter.convertPenceToEuros(pence);
         } else {
             return euros;
         }
