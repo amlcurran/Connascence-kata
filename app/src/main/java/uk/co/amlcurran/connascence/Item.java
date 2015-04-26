@@ -9,10 +9,18 @@ public class Item {
     private final int pence;
     private final int euros;
 
-    public Item(String label, int pence, int euros) {
+    private Item(String label, int pence, int euros) {
         this.label = label;
         this.pence = pence;
         this.euros = euros;
+    }
+
+    static Item inPence(String label, int pence) {
+        return new Item(label, pence, 0);
+    }
+
+    static Item inEuros(String label, int euros) {
+        return new Item(label, 0, euros);
     }
 
     public int price() {
