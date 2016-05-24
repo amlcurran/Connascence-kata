@@ -1,11 +1,11 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
+android/build
 /captures
 *.iml
+
+android/.idea/
+android/local.properties
+android/.gradle
 
 ios/Connascence/Connascence.xcodeproj/project.xcworkspace/xcuserdata/
 ios/Connascence/Connascence.xcodeproj/xcuserdata/
