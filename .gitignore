@@ -6,3 +6,6 @@
 /build
 /captures
 *.iml
+
+ios/Connascence/Connascence.xcodeproj/project.xcworkspace/xcuserdata/
+ios/Connascence/Connascence.xcodeproj/xcuserdata/
