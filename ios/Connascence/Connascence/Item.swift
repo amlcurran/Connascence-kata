@@ -8,7 +8,7 @@ struct Item {
     
     func price() -> Double {
         if let pencePrice = pencePrice {
-            return Double(pencePrice)
+            return Double(pencePrice) / 100.0
         } else {
             let asPounds = Converter.sharedInstance.eurosToPounds(eurosPrice!)
             return asPounds

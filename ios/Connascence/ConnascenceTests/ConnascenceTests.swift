@@ -1,36 +1,30 @@
-//
-//  ConnascenceTests.swift
-//  ConnascenceTests
-//
-//  Created by Alexander Curran on 24/05/2016.
-//  Copyright © 2016 Alexander Curran. All rights reserved.
-//
-
 import XCTest
 @testable import Connascence
 
 class ConnascenceTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testAnItemReportsItsPriceCorrectly() {
+        let item = Item(label: "Cola", pencePrice: 200, eurosPrice: nil)
+        
+        XCTAssertEqual(item.price(), 200 / 100.0)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testAnItemReportsItsPriceEuroCorrectly() {
+        let item = Item(label: "Baked beans", pencePrice: nil, eurosPrice: 4)
+        
+        XCTAssertEqual(item.priceInEuros(), 4.0)
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAnItemConvertsToEurosCorrectly() {
+        let item = Item(label: "Gin", pencePrice: 1000, eurosPrice: nil)
+        
+        XCTAssertEqual(item.priceInEuros(), 1000 / 100.0 * 1.1)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
+    func testAnItemConvertsToPoundsCorrectly() {
+        let item = Item(label: "Cooked Chicken", pencePrice: nil, eurosPrice: 3)
+        
+        XCTAssertEqual(item.price(), 3 / 1.1)
     }
     
 }
